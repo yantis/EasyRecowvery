@@ -63,31 +63,32 @@ echo. >%~dp0recowvery-exploit.log
 
 <nul set /p= Locating adb.exe...                                             
 
-adb version >nul && set ADB=adb || (
-    if not exist %ADB% (
-        echo No adb.exe in PATH >>%~dp0recowvery-exploit.log
-        set ADB=%ANDROID_HOME%\platform-tools\adb.exe
-    )
-    if not exist %ADB% (
-        echo Failed to find adb.exe in ANDROID_HOME >>%~dp0recowvery-exploit.log
-        set ADB=%LOCALAPPDATA%\Android\sdk\platform-tools\adb.exe
-    )
-    if not exist %ADB% (
-        echo Failed to find adb.exe in AppData >>%~dp0recowvery-exploit.log
-        set ADB=%ProgramFiles^(x86^)%\Android\android-sdk\platform-tools\adb.exe
-    )
-    if not exist %ADB% (
-        echo Failed to find adb.exe in Program Files ^(x86^) >>%~dp0recowvery-exploit.log
-        set ADB=%PROGRAMFILES%\Android\android-sdk\platform-tools\adb.exe
-    )
-    if not exist %ADB% (
-        echo Failed to find adb.exe in Program Files >>%~dp0recowvery-exploit.log
-        set ADB=C:\android-sdk\platform-tools\adb.exe
-    )
-    if not exist %ADB% (
-        echo FAILED!
-        echo
-    )
+where /q adb && for /f "tokens=1" %%i in ('where adb') do set ADB=%%i
+if not exist %ADB% (
+    echo Failed to find adb.exe in %cd% or PATH >>%~dp0recowvery-exploit.log
+    set ADB=%ANDROID_HOME%\platform-tools\adb.exe
+)
+if not exist %ADB% (
+    echo Failed to find adb.exe in ANDROID_HOME >>%~dp0recowvery-exploit.log
+    set ADB=%LOCALAPPDATA%\Android\sdk\platform-tools\adb.exe
+)
+if not exist %ADB% (
+    echo Failed to find adb.exe in AppData >>%~dp0recowvery-exploit.log
+    set ADB=%ProgramFiles^(x86^)%\Android\android-sdk\platform-tools\adb.exe
+)
+if not exist %ADB% (
+    echo Failed to find adb.exe in Program Files ^(x86^) >>%~dp0recowvery-exploit.log
+    set ADB=%PROGRAMFILES%\Android\android-sdk\platform-tools\adb.exe
+)
+if not exist %ADB% (
+    echo Failed to find adb.exe in Program Files >>%~dp0recowvery-exploit.log
+    set ADB=C:\android-sdk\platform-tools\adb.exe
+)
+if not exist %ADB% (
+    echo FAILED!
+    echo.
+    echo Could not locate adb.exe. Please ensure that it is installed properly.
+    goto end
 )
 echo SUCCESS!
 echo adb.exe found at "%ADB%" >>%~dp0recowvery-exploit.log
