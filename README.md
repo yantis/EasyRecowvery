@@ -3,11 +3,9 @@ A collection of scripts to install @jcadduono's Recowvery (https://github.com/jc
 
 ## Disclaimer
 
-** WARNING: ATTEMPT AT YOUR OWN RISK! THIS PACKAGE IS RELEASED AS-IS AND WITHOUT ANY WARRANTY, IMPLIED OR EXPRESSED **
-
-** THIS PACKAGE MAY MAKE YOUR LIFE EASIER (or harder) BUT NOTHING CAN FULLY PROTECT YOU FROM TROUBLE WHEN ROOTING A DEVICE! **
-
-** IT IS NOT MY RESPONSIBILITY IF YOU END UP WITH A BRICK IN YOUR POCKET AFTER ATTEMPTING ROOT **
+WARNING: ATTEMPT AT YOUR OWN RISK! THIS PACKAGE IS RELEASED AS-IS AND WITHOUT ANY WARRANTY, IMPLIED OR EXPRESSED
+THIS PACKAGE MAY MAKE YOUR LIFE EASIER (or harder) BUT NOTHING CAN FULLY PROTECT YOU FROM TROUBLE WHEN ROOTING A DEVICE!
+IT IS NOT MY RESPONSIBILITY IF YOU END UP WITH A BRICK IN YOUR POCKET AFTER ATTEMPTING ROOT
 
 
 ## Features
@@ -23,6 +21,11 @@ With this package, you can accomplish the following:
 2. Put the recovery of your choosing (i.e. [this one](https://build.nethunter.com/test-builds/twrp/lge/twrp-3.0.2-0-beta4-h918.img)) on your internal storage, and rename it to recovery.img
 3. Run EasyRecowvery.cmd and follow the prompts
 4. Profit!
+
+## Tips:
+- If you're having ADB problems, try dragging "adb.exe", "AdbWinApi.dll", and "AdbWinUsbApi.dll" into the folder with EasyRecowvery.
+- You may want to Run as Administrator to avoid permission errors.
+- Please provide your log files and/or screenshots when reporting issues.
 
 ## Todo & Known Issues
 TODO: fill this out :)
