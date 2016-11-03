@@ -25,12 +25,9 @@ echo IF YOU JUST WANT TO GET TWRP RUNNING WITH NO OTHER MODIFICATIONS, USE OPTIO
 echo.
 echo Please select from the following options:
 echo.
-echo 1) Run exploit and flash /sdcard/recovery.img (Leave selinux enforcing)
-echo 2) Run exploit and flash /sdcard/recovery.img (Set selinux permissive)
-echo 3) Run exploit and spawn a limited root shell (Be careful in there!)
-echo 4) Flash only (For resuming after a successful exploit)
-echo 5) Download boot and recovery backups from /sdcard/stock_*.img
-echo 6) Restore stock boot and recovery from /sdcard/stock_*.img
+echo 1) Run exploit and flash /sdcard/recovery.img ^(Leave selinux enforcing^)
+echo 2) Run exploit and flash /sdcard/recovery.img ^(Set selinux permissive^)
+echo 3) Run exploit and spawn a limited root shell ^(Be careful in there!^)
 rem TODO: finish integrity verification disabler
 rem <nul set /p= 7) Toggle integrity verification during exploit (currently 
 rem if "%NOHASH%"=="true" (echo disabled^)) else (echo enabled^))
@@ -104,7 +101,7 @@ for /f "tokens=1,3" %%i in ('%ADB% devices -l') do (
         set ANDROID_SERIAL=%%i
         for /f "tokens=2 delims=:" %%n in ("%%j") do echo %%n
         if not "%%j"=="product:elsa_tmo_us" (
-            echo This device doesn't look like a T-mobile V20. Proceed anyway? (DANGEROUS!!!)
+            echo This device doesn't look like a T-mobile V20. Proceed anyway? ^(DANGEROUS!^)
             set /p response=^(Y/N^) %=%
             if /i "%response%"=="y" goto check
             if /i "%response%"=="n" goto end
@@ -117,7 +114,7 @@ if %ANDROID_SERIAL%=="" (
     echo Failed to find your V20!
     echo.
     echo Did you remember to plug in the device?
-    echo Is your V20 set to "always allow" this computer to connect to ADB? (see: http://i.imgur.com/wgDZmRJ.png)
+    echo Is your V20 set to "always allow" this computer to connect to ADB? ^(see: http://i.imgur.com/wgDZmRJ.png^)
     echo Are you using a recent version of ADB?
     echo.
     echo Press Ctrl-C to quit, or any other key to retry.
