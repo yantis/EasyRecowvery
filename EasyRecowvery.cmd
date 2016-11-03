@@ -9,9 +9,13 @@ set GETBACKUPS=""
 cls
 
 echo.
-echo =============================================================================================
-echo ==             T-mobile LG V20 (H918) One-Click DirtyCow Installer and Toolkit             ==
-echo ================================================================================= beta4 =====
+echo ============================================================================================
+echo ==           T-mobile LG V20 ^(H918^) One-Click DirtyCow Installer and Toolkit!           ==
+echo ==                        https://github.com/bziemek/EasyRecowvery                        ==
+echo ==----------------------------------------------------------------------------------------==
+echo ==                      Powered by jcadduono's Dirtycow root exploit                      ==
+echo ==                 https://github.com/jcadduono/android_external_dirtycow                 ==
+echo =============================================================================== beta 5 =====
 echo.
 echo Pre-flight checklist:
 echo - Install ADB, perferably with the Android SDK provided by Google (https://goo.gl/7ijkjp)
@@ -96,8 +100,8 @@ echo adb.exe found at "%ADB%" >>%~dp0recowvery-exploit.log
 :scan
 
 <nul set /p= Looking for ADB device...                                       
-%ADB% kill-server >nul || (echo FAILED! & echo Could not run adb.exe...)
-%ADB% devices >nul
+%ADB% kill-server >nul 2>&1 || (echo FAILED! & echo Could not run adb.exe...)
+%ADB% devices >nul 2>&1
 
 set ANDROID_SERIAL=""
 for /f "tokens=1,3" %%i in ('%ADB% devices -l') do (
@@ -131,7 +135,6 @@ set response=""
 set /p response=^(Y/N^) %=%
 if /i "%response%"=="y" goto check
 if /i "%response%"=="n" goto end
-echo %response%
 goto scan
 
 :check
@@ -152,7 +155,7 @@ for /f "tokens=1" %%i in ('%ADB% shell getprop ro.boot.flash.locked') do (
     )
 )
 echo SUCCESS!
-
+echo.
 echo Using device with serial %ANDROID_SERIAL%
 
 if "%COMMAND%"=="5" goto getbackups
