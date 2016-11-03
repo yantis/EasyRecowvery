@@ -26,3 +26,7 @@ With this package, you can accomplish the following:
 
 ## Todo & Known Issues
 TODO: fill this out :)
+
+## Donations
+PayPal: bezeek@gmail.com
+BTC: 1bu5MMgagtbN7QVeciyWfAzRbfk8vmynM
