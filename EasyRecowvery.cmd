@@ -57,7 +57,7 @@ goto menu
 echo.
 echo - - - Making sure we're good to go - - -
 echo.
-echo >%~dp0recowvery-exploit.log
+echo. >%~dp0recowvery-exploit.log
 
 :findadb
 
