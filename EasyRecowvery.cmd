@@ -106,10 +106,7 @@ for /f "tokens=1,3" %%i in ('%ADB% devices -l') do (
         for /f "tokens=2 delims=:" %%n in ("%%j") do echo %%n
         if not "%%j"=="product:elsa_tmo_us" (
             echo This device doesn't look like a T-mobile V20. Proceed anyway? ^(DANGEROUS!^)
-            set /p response=^(Y/N^) %=%
-            if /i "%response%"=="y" goto check
-            if /i "%response%"=="n" goto end
-            goto scan
+            goto forcerun
         )
     )
 )
@@ -128,6 +125,15 @@ if %ANDROID_SERIAL%=="" (
 
 set ADB=%ADB% -s %ANDROID_SERIAL%
 
+:forcerun
+
+set response=""
+set /p response=^(Y/N^) %=%
+if /i "%response%"=="y" goto check
+if /i "%response%"=="n" goto end
+echo %response%
+goto scan
+
 :check
 
 set response=""
@@ -142,6 +148,7 @@ for /f "tokens=1" %%i in ('%ADB% shell getprop ro.boot.flash.locked') do (
         echo fastboot oem unlock
         echo From your computer, then try again.
         echo http://i.imgur.com/2BhNatP.png
+        goto end
     )
 )
 echo SUCCESS!
@@ -213,7 +220,7 @@ goto getlogs
 :installedrec
 echo.
 echo All done! Would you like to download your boot and recovery backup images noW?
-set /p response=^(Y/N^) %==%
+set /p response=^(Y/N^) %=%
 if /i "%response%"=="y" set GETBACKUPS=true
 
 :getlogs
@@ -246,7 +253,7 @@ echo.
     echo.
     echo Delete backup images from /sdcard/?
     set response=""
-    set /p response=^(Y/N^) %==%
+    set /p response=^(Y/N^) %=%
     if /i "%response%"=="y" (
         %ADB% shell rm /sdcard/stock_recovery.img 2>nul
         %ADB% shell rm /sdcard/stock_recovery.img.sha1 2>nul
