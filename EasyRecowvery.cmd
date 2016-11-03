@@ -28,6 +28,9 @@ echo.
 echo 1) Run exploit and flash /sdcard/recovery.img ^(Leave selinux enforcing^)
 echo 2) Run exploit and flash /sdcard/recovery.img ^(Set selinux permissive^)
 echo 3) Run exploit and spawn a limited root shell ^(Be careful in there!^)
+echo 4) Flash only ^(For resuming after a successful exploit^)
+echo 5) Download boot and recovery backups from /sdcard/stock_*.img
+echo 6) Restore stock boot and recovery from /sdcard/stock_*.img
 rem TODO: finish integrity verification disabler
 rem <nul set /p= 7) Toggle integrity verification during exploit (currently 
 rem if "%NOHASH%"=="true" (echo disabled^)) else (echo enabled^))
