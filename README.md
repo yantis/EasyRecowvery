@@ -12,7 +12,7 @@ With this package, you can accomplish the following:
 ## Installation & Usage
 1. Download the ZIP from [GitHub](https://github.com/bziemek/EasyRecowvery/archive/master.zip) and extract it to a directory of your choosing
 2. Put the recovery of your choosing on your internal storage, and rename it to recovery.img
-3. Click recowvery.cmd and follow the prompts
+3. Run EasyRecowvery.cmd and follow the prompts
 4. Profit!
 
 ## Todo & Known Issues
