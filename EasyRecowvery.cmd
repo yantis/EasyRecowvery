@@ -21,13 +21,13 @@ echo - Upload your desired recovery to /sdcard/recovery.img
 echo - Plug in only one device - this script does not support batch operations
 echo - Try to resist the urge to touch your phone, especially when the screen goes all weird
 echo.
-echo.
+echo IF YOU JUST WANT TO GET TWRP RUNNING WITH NO OTHER MODIFICATIONS, USE OPTION 1
 echo.
 echo Please select from the following options:
 echo.
-echo 1) Exploit and flash /sdcard/recovery.img (Leave selinux enforcing)
-echo 2) Exploit and flash /sdcard/recovery.img (Set selinux permissive)
-echo 3) Exploit and spawn a root shell (Be careful in there!)
+echo 1) Run exploit and flash /sdcard/recovery.img (Leave selinux enforcing)
+echo 2) Run exploit and flash /sdcard/recovery.img (Set selinux permissive)
+echo 3) Run exploit and spawn a limited root shell (Be careful in there!)
 echo 4) Flash only (For resuming after a successful exploit)
 echo 5) Download boot and recovery backups from /sdcard/stock_*.img
 echo 6) Restore stock boot and recovery from /sdcard/stock_*.img
@@ -104,7 +104,7 @@ for /f "tokens=1,3" %%i in ('%ADB% devices -l') do (
         set ANDROID_SERIAL=%%i
         for /f "tokens=2 delims=:" %%n in ("%%j") do echo %%n
         if not "%%j"=="product:elsa_tmo_us" (
-            echo This device doesn't look like a T-mobile V20. Proceed anyway?
+            echo This device doesn't look like a T-mobile V20. Proceed anyway? (DANGEROUS!!!)
             set /p response=^(Y/N^) %=%
             if /i "%response%"=="y" goto check
             if /i "%response%"=="n" goto end
@@ -117,7 +117,7 @@ if %ANDROID_SERIAL%=="" (
     echo Failed to find your V20!
     echo.
     echo Did you remember to plug in the device?
-    echo Is your V20 set to "always allow" this computer to connect to ADB?
+    echo Is your V20 set to "always allow" this computer to connect to ADB? (see: http://i.imgur.com/wgDZmRJ.png)
     echo Are you using a recent version of ADB?
     echo.
     echo Press Ctrl-C to quit, or any other key to retry.
