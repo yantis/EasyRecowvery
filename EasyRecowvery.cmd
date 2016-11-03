@@ -57,7 +57,7 @@ goto menu
 echo.
 echo - - - Making sure we're good to go - - -
 echo.
-echo >recowvery-exploit.log
+echo >%~dp0recowvery-exploit.log
 
 :findadb
 
@@ -65,23 +65,23 @@ echo >recowvery-exploit.log
 
 adb version >nul && set ADB=adb || (
     if not exist %ADB% (
-        echo No adb.exe in PATH >>recowvery-exploit.log
+        echo No adb.exe in PATH >>%~dp0recowvery-exploit.log
         set ADB=%ANDROID_HOME%\platform-tools\adb.exe
     )
     if not exist %ADB% (
-        echo Failed to find adb.exe in ANDROID_HOME >>recowvery-exploit.log
+        echo Failed to find adb.exe in ANDROID_HOME >>%~dp0recowvery-exploit.log
         set ADB=%LOCALAPPDATA%\Android\sdk\platform-tools\adb.exe
     )
     if not exist %ADB% (
-        echo Failed to find adb.exe in AppData >>recowvery-exploit.log
+        echo Failed to find adb.exe in AppData >>%~dp0recowvery-exploit.log
         set ADB=%ProgramFiles^(x86^)%\Android\android-sdk\platform-tools\adb.exe
     )
     if not exist %ADB% (
-        echo Failed to find adb.exe in Program Files ^(x86^) >>recowvery-exploit.log
+        echo Failed to find adb.exe in Program Files ^(x86^) >>%~dp0recowvery-exploit.log
         set ADB=%PROGRAMFILES%\Android\android-sdk\platform-tools\adb.exe
     )
     if not exist %ADB% (
-        echo Failed to find adb.exe in Program Files >>recowvery-exploit.log
+        echo Failed to find adb.exe in Program Files >>%~dp0recowvery-exploit.log
         set ADB=C:\android-sdk\platform-tools\adb.exe
     )
     if not exist %ADB% (
@@ -90,7 +90,7 @@ adb version >nul && set ADB=adb || (
     )
 )
 echo SUCCESS!
-echo adb.exe found at "%ADB%" >>recowvery-exploit.log
+echo adb.exe found at "%ADB%" >>%~dp0recowvery-exploit.log
 
 :scan
 
@@ -157,9 +157,9 @@ echo - - - Pushing exploit to %TARGET%/recowvery - - -
 echo.
 
 <nul set /p= Copying files...                                                
-echo Pushing exploit >>recowvery-exploit.log
+echo Pushing exploit >>%~dp0recowvery-exploit.log
 %ADB% shell rm -rf %TARGET%/recowvery >nul
-%ADB% push %SRC% %TARGET%/recowvery >>recowvery-exploit.log 2>&1
+%ADB% push %SRC% %TARGET%/recowvery >>%~dp0recowvery-exploit.log 2>&1
 %ADB% shell test -e %TARGET%/recowvery/recowvery.sh || (
     echo FAILED!
     echo.
@@ -218,10 +218,10 @@ if /i "%response%"=="y" set GETBACKUPS=true
 :getlogs
 rem Pull whatever we managed to log
 
-%ADB% pull %TARGET%/recowvery/audit.log recowvery-audit.log >nul 2>&1
-%ADB% pull %TARGET%/recowvery/shell.log recowvery-shell.log >nul 2>&1
-%ADB% logcat -d > recowvery-logcat.log 2>nul
-%ADB% shell cat %TARGET%/recowvery/recowvery.log 2>nul >>recowvery-exploit.log
+%ADB% pull %TARGET%/recowvery/audit.log %~dp0recowvery-audit.log >nul 2>&1
+%ADB% pull %TARGET%/recowvery/shell.log %~dp0recowvery-shell.log >nul 2>&1
+%ADB% logcat -d > %~dp0recowvery-logcat.log 2>nul
+%ADB% shell cat %TARGET%/recowvery/recowvery.log 2>nul >>%~dp0recowvery-exploit.log
 
 if "%GETBACKUPS%"=="true" goto getbackups
 
@@ -235,10 +235,10 @@ rem Grab any backups taken before the flash
 
 echo.
 <nul set /p= Downloading backups...                                          
-%ADB% pull /sdcard/stock_recovery.img 2>nul >>recowvery-exploit.log && ^
-%ADB% pull /sdcard/stock_recovery.img.sha1 2>nul >>recowvery-exploit.log && ^
-%ADB% pull /sdcard/stock_boot.img 2>nul >>recowvery-exploit.log && ^
-%ADB% pull /sdcard/stock_boot.img.sha1 2>nul >>recowvery-exploit.log && (
+%ADB% pull /sdcard/stock_recovery.img 2>nul >>%~dp0recowvery-exploit.log && ^
+%ADB% pull /sdcard/stock_recovery.img.sha1 2>nul >>%~dp0recowvery-exploit.log && ^
+%ADB% pull /sdcard/stock_boot.img 2>nul >>%~dp0recowvery-exploit.log && ^
+%ADB% pull /sdcard/stock_boot.img.sha1 2>nul >>%~dp0recowvery-exploit.log && (
     echo SUCCESS!
     echo.
     echo - - - SAVED LOGS AND BACKUPS TO %cd%\ - - -
