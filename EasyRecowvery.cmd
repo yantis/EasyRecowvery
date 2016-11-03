@@ -1,5 +1,5 @@
 @echo off
-set SRC=exploit
+set SRC=%~dp0exploit
 set TARGET=/data/local/tmp
 set ADB=""
 set GETBACKUPS=""
