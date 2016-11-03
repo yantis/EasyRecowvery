@@ -1,5 +1,6 @@
 # EasyRecowvery
-A collection of scripts to install @jcadduono's Recowvery (https://github.com/jcadduono/android_external_dirtycow)
+A collection of scripts to install @jcadduono's [Recowvery](https://github.com/jcadduono/android_external_dirtycow).
+Please see his original thread @ [[H918] recowvery, unlock your V20 root shell - now with TWRP!](http://forum.xda-developers.com/v20/development/h918-recowvery-unlock-v20-root-shell-t3490594) for more information, and don't forget to thank him any way you can!
 
 ## Disclaimer
 
