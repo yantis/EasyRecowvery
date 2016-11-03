@@ -11,7 +11,7 @@ cls
 echo.
 echo =============================================================================================
 echo ==             T-mobile LG V20 (H918) One-Click DirtyCow Installer and Toolkit             ==
-echo ================================================================================= beta3 =====
+echo ================================================================================= beta4 =====
 echo.
 echo Pre-flight checklist:
 echo - Install ADB, perferably with the Android SDK provided by Google (https://goo.gl/7ijkjp)
