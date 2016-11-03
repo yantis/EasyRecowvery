@@ -1,6 +1,12 @@
 # EasyRecowvery
 A collection of scripts to install @jcadduono's Recowvery (https://github.com/jcadduono/android_external_dirtycow)
 
+## Disclaimer
+
+** WARNING: ATTEMPT AT YOUR OWN RISK! THIS PACKAGE IS RELEASED AS-IS AND WITHOUT ANY WARRANTY, IMPLIED OR EXPRESSED **
+** THIS PACKAGE MAY MAKE YOUR LIFE EASIER (or harder) BUT NOTHING CAN FULLY PROTECT YOU FROM TROUBLE WHEN ROOTING A DEVICE! **
+** IT IS NOT MY RESPONSIBILITY IF YOU END UP WITH A BRICK IN YOUR POCKET AFTER ATTEMPTING ROOT **
+
 ## Features
 With this package, you can accomplish the following:
 - Install TWRP in just a couple of clicks
