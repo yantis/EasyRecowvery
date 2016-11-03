@@ -235,10 +235,10 @@ rem Grab any backups taken before the flash
 
 echo.
 <nul set /p= Downloading backups...                                          
-%ADB% pull /sdcard/stock_recovery.img 2>nul >>%~dp0recowvery-exploit.log && ^
-%ADB% pull /sdcard/stock_recovery.img.sha1 2>nul >>%~dp0recowvery-exploit.log && ^
-%ADB% pull /sdcard/stock_boot.img 2>nul >>%~dp0recowvery-exploit.log && ^
-%ADB% pull /sdcard/stock_boot.img.sha1 2>nul >>%~dp0recowvery-exploit.log && (
+%ADB% pull /sdcard/stock_recovery.img %~dp0 2>nul >>%~dp0recowvery-exploit.log && ^
+%ADB% pull /sdcard/stock_recovery.img.sha1 %~dp0 2>nul >>%~dp0recowvery-exploit.log && ^
+%ADB% pull /sdcard/stock_boot.img %~dp0 2>nul >>%~dp0recowvery-exploit.log && ^
+%ADB% pull /sdcard/stock_boot.img.sha1 %~dp0 2>nul >>%~dp0recowvery-exploit.log && (
     echo SUCCESS!
     echo.
     echo - - - SAVED LOGS AND BACKUPS TO %cd%\ - - -
